@@ -1,7 +1,7 @@
 import express from 'express';
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
     res.status(200).send({
@@ -65,9 +65,8 @@ app.get("/", (req, res) => {
           }
         ]
       })
-})
+});
 
-app.listen(
-    PORT,
-    () => console.log(`Serviço disponivel na http://localhost:${PORT}`)
-)
+app.listen(PORT, () => {
+  console.log(`Serviço disponivel na http://localhost:${PORT}`);
+});
